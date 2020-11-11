@@ -2,6 +2,9 @@
 html {
     scroll-behavior: smooth;
   }
+body{
+    background-color: #FAE7CB;
+}
 nav{
     background: #FFD31D;
     color: black;
@@ -75,3 +78,34 @@ display: flex;
 }
 
 /*grid*/
+
+/*
+*
+* grid items 
+*
+*/
+#grid-book{
+    
+}
+
+.bookcard{
+    margin:35px 20px;
+    /* box-shadow: 5px 5px rgb(0, 0, 0,0.3); */
+    box-shadow: 5px 9px #FFB385;
+}
+
+
+.bookbtn{
+    background-color: #FF7272;
+    
+}
+
+/*pagination*/
+#pagination{
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.page-link{
+    color: #000000 !important;
+}

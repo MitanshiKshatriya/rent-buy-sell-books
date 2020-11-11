@@ -13,11 +13,78 @@
             
                 </div>
     </div>
-    <div id="grid-book">
-        <h2>ADD TABS SHOW RENT/BUY BOOKS</h2>
-        <h2>ADD TABS SHOW RENT/BUY BOOKS</h2>
-        <h2>ADD TABS SHOW RENT/BUY BOOKS</h2>
-        <h2>ADD TABS SHOW RENT/BUY BOOKS</h2>
+   
+        <!-- <div id="tabs">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Rent</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Buy</a>
+                </li>
+                </ul>
+              
+        </div> -->
+        <div id="filters" class="container">
+<button class="btn">Filters</button>
+<form class="form-inline my-2 my-lg-0">
+    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  </form>
+        </div>
+    <div id="grid-book">   
+
+<div class="container">
+    <div class="row justify-space-around">
+        <% for (var i =1; i <=9;  i++ ) { %>
+            
+            <div class="card bookcard" id=<%=i%> style="width: 21rem;">
+                <img class="card-img-top" src="/image/deadly-class-vol-1-reagan-youth-tp.jpg" 
+                alt="Card image cap"
+                height="200"
+                >
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up 
+                      the bulk of the card's content.</p>
+                <p id="details">Price: <%=i%>
+                <!-- <p id="courier"> --><br>
+                    Courier: <%=i%><br>
+                location: onhalu</p>
+                  <a href="#" class="btn bookbtn ml-auto">Contact Seller</a>
+                </div>
+              </div>
+
+
+            <%#  will output the numbers 1-10 %>
+            <% } %>
+            
     </div>
+</div>
+
+    </div>
+
+<div id="pagination" class="container text-center">
+
+        <ul class="pagination">
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+              <span class="sr-only">Previous</span>
+            </a>
+          </li>
+          <li class="page-item"><a class="page-link" href="#">1</a></li>
+          <li class="page-item"><a class="page-link" href="#">2</a></li>
+          <li class="page-item"><a class="page-link" href="#">3</a></li>
+          <li class="page-item">
+            <a class="page-link" href="#" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+              <span class="sr-only">Next</span>
+            </a>
+          </li>
+        </ul>
+
+      
+</div>
 
 <%- include("./partials/footer.ejs") -%>
