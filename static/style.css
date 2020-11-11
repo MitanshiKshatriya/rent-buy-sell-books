@@ -109,3 +109,50 @@ display: flex;
 .page-link{
     color: #000000 !important;
 }
+/*
+* home page
+*/
+
+
+/*
+* login page
+*/
+
+#login-form{
+    width:40%;
+padding:2% 3%;
+
+background: #FFB385;
+border-radius: 60px;
+display:flex;
+align-items: center;
+justify-content: center;
+/* flex-direction: column; */
+margin-top: 10%;
+
+}
+#login-btn{
+    background-color: #FF7272;
+}
+
+
+/*
+* signup page
+*/
+
+#signup-form{
+    width:40%;
+padding:2% 3%;
+
+background: #FFB385;
+border-radius: 60px;
+display:flex;
+align-items: center;
+justify-content: center;
+/* flex-direction: column; */
+margin-top: 5%;
+
+}
+#signup-btn{
+    background-color: #FF7272;
+}

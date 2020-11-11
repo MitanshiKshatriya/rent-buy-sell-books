@@ -1,0 +1,42 @@
+<%- include("./partials/header.ejs") -%>
+
+<div class="container" id="signup-form">
+<form method="POST" action="/signup">
+    <div class="form-group">
+        <label>Name</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+      </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" 
+      id="email" 
+      name="email"
+      aria-describedby="emailHelp" placeholder="Enter email">
+      
+    </div>
+    <div class="form-group">
+        <label>Phone Number</label>
+        <input type="tel" class="form-control" id="tel" 
+        name="tel"
+        placeholder="Phone Number">
+      </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1"
+      name="password"
+      placeholder="Password">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Confirm Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+      </div>
+    <small id="emailHelp" class="form-text text-muted">Don't have an account? <a href="/signup"><u>Sign Up</u><a></a></small>
+    <button type="submit" class="btn" id="signup-btn">Submit</button>
+  </form>
+
+</div>
+
+
+
+<%- include("./partials/footer.ejs") -%>
