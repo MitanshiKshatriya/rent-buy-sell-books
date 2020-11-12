@@ -24,7 +24,7 @@ const register = (req,res,next) =>  {
             //     message: "user added Succesfully"
             // })
            
-            res.redirect('/register')
+            res.redirect('/login')
         })
         .catch(error =>{
             res.json({

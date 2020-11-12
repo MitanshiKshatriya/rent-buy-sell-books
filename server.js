@@ -13,6 +13,7 @@ const app = express()
  */
 const UserRoute = require('./routes/UserRoute')
 const AuthRoute = require('./routes/AuthRoute')
+const BookRoute = require('./routes/BooksRoutes')
 const authenticate = require('./middleware/authenticate')
 
 const PORT = process.env.PORT || 3000 
@@ -59,11 +60,6 @@ app.use(middlewares)
 
 
 
-/* session middleware */
-
-
-
-/* session middleware */
 
 
 app.get('/',authenticate,function(req,res){
@@ -83,6 +79,8 @@ app.get('/',authenticate,function(req,res){
 app.use('/',AuthRoute)
 
 app.use('/',UserRoute)
+
+app.use('/',BookRoute)
 
 app.post('/fuckmylife',function(req,res){
     console.log(req.body)
