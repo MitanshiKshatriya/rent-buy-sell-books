@@ -21,7 +21,9 @@
   <li><a href="/sell">SELL</a></li>
   <% if(!locals.auth){ %>
   <li><a href="/login">LOGIN</a></li>
+  <li><a href="/register">REGISTER</a></li>
   <%}%>
+  <%if(locals.auth){%>
   <li>
     <ul class="navbar-nav">
       <li class="nav-item dropdown">
@@ -29,15 +31,17 @@
         <img src="https://s3.eu-central-1.amazonaws.com/bootstrapbaymisc/blog/24_days_bootstrap/fox.jpg" width="30" height="30" class="rounded-circle">
       </a>
       <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+        <%if(user){%>
         <p>Signed in as <%=user.name%></p>
+        <%}%>
         <a class="dropdown-item" href="#">Dashboard</a>
         <a class="dropdown-item" href="#">Edit Profile</a>
-        <a class="dropdown-item" href="#">Log Out</a>
+        <a class="dropdown-item" href="/logout">Log Out</a>
       </div>
     </li>   
   </ul>
   </li>
-
+  <%}%>
 </ul>
   </div>
 </nav>

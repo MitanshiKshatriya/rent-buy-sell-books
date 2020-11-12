@@ -3,6 +3,9 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const path = require('path')
 const cookieParser = require('cookie-parser')
+
+
+
 const app = express()
 
 /**
@@ -56,22 +59,26 @@ app.use(middlewares)
 
 
 
+/* session middleware */
+
+
+
+/* session middleware */
+
+
 app.get('/',authenticate,function(req,res){
     console.log("user info= ",req.user)
     var auth=false
     if(req.user){
         auth=true
+        res.render("home",{auth:auth,user:req.user})
     }
-res.render("home",{auth:auth,user:req.user})
+    res.render("home",{auth:auth})
+
 })
 
-// app.get('/login',function(req,res){
-//     res.render("login")
-// })
 
-app.get('/signup',function(req,res){
-    res.render("signup")
-})
+
 
 app.use('/',AuthRoute)
 

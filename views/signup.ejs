@@ -1,5 +1,7 @@
 <%- include("./partials/header.ejs") -%>
 
+
+
 <div class="container" id="signup-form">
 <form method="POST" action="/register">
     <div class="form-group">
@@ -31,7 +33,7 @@
         <label for="exampleInputPassword1">Confirm Password</label>
         <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
       </div>
-    <small id="emailHelp" class="form-text text-muted">Don't have an account? <a href="/signup"><u>Sign Up</u><a></a></small>
+    <small id="emailHelp" class="form-text text-muted">Already have an account? <a href="/login"><u>Login In</u><a></a></small>
     <button type="submit" class="btn" id="signup-btn">Submit</button>
   </form>
 

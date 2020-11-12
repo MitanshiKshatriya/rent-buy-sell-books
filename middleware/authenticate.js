@@ -18,11 +18,11 @@ req.user = decode
 next()
     }
     catch(e){
-        res.json({
-            message: "Authentication failed!",
-            err:e 
-        })
-
+        // res.json({
+        //     message: "Authentication failed!",
+        //     err:e 
+        // })
+res.render("home",{auth:false})
     }
 }
 

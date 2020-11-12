@@ -20,10 +20,11 @@ const register = (req,res,next) =>  {
     
         user.save()
         .then(user=>{
-            res.json({
-                message: "user added Succesfully"
-            })
-    
+            // res.json({
+            //     message: "user added Succesfully"
+            // })
+           
+            res.redirect('/register')
         })
         .catch(error =>{
             res.json({
@@ -60,7 +61,8 @@ const login = (req,res,next) => {
                     //     token
                     // })
                     res.cookie('token', token);
-                    res.send(`set token = ${token}`)
+                   // res.send(`set token = ${token}`)
+                   res.redirect('/')
                 }else{
                     res.json({
                         message: "Password does not match"
@@ -79,6 +81,17 @@ const getLogin = (req,res) =>{
     res.render("login")
 }
 
+const logout = (req,res) =>{
+    res.clearCookie('token')
+    res.redirect('/')
+
+}
+
+const getRegister = (req,res) =>{
+    // res.render('signup',{message: req.flash('notify') })
+    res.render('signup')
+}
+
 module.exports = {
-    register,login,getLogin
+    register,login,getLogin,logout,getRegister
 }
