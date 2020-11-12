@@ -2,12 +2,15 @@ const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const path = require('path')
+const cookieParser = require('cookie-parser')
 const app = express()
 
 /**
  * adding routes
  */
 const UserRoute = require('./routes/UserRoute')
+const AuthRoute = require('./routes/AuthRoute')
+const authenticate = require('./middleware/authenticate')
 
 const PORT = process.env.PORT || 3000 
 
@@ -35,6 +38,7 @@ db.once('open',()=>{
 
 app.use(bodyParser.urlencoded({extended:true}))
 // app.use(bodyParser.json())
+app.use(cookieParser());
 
 /** enabling form / json posts */
 
@@ -52,17 +56,24 @@ app.use(middlewares)
 
 
 
-app.get('/',function(req,res){
-res.render("home")
+app.get('/',authenticate,function(req,res){
+    console.log("user info= ",req.user)
+    var auth=false
+    if(req.user){
+        auth=true
+    }
+res.render("home",{auth:auth,user:req.user})
 })
 
-app.get('/login',function(req,res){
-    res.render("login")
-})
+// app.get('/login',function(req,res){
+//     res.render("login")
+// })
 
 app.get('/signup',function(req,res){
     res.render("signup")
 })
+
+app.use('/',AuthRoute)
 
 app.use('/',UserRoute)
 

@@ -39,10 +39,10 @@ const register = (req,res,next) =>  {
 
 
 const login = (req,res,next) => {
-    var username = req.body.username
+    var email = req.body.email
     var password = req.body.password
 
-    User.findOne({$or: [{email:username},{phone:username}]})
+    User.findOne({$or: [{email:email},{phone:email}]})
     .then(user=>{
         if(user)
         {
@@ -54,11 +54,13 @@ const login = (req,res,next) => {
                     })
                 }
                 if(result){
-                    let token = jwt.sign({name: user.name}, 'verySecretValue',{expiresIn: '24h'})
-                    res.json({
-                        message:"login siuccessful!",
-                        token
-                    })
+                    let token = jwt.sign({name: user.name,email:user.email}, 'verySecretValue',{expiresIn: '24h'})
+                    // res.json({
+                    //     message:"login siuccessful!",
+                    //     token
+                    // })
+                    res.cookie('token', token);
+                    res.send(`set token = ${token}`)
                 }else{
                     res.json({
                         message: "Password does not match"
