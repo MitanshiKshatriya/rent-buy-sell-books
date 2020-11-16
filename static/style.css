@@ -3,7 +3,7 @@ html {
     scroll-behavior: smooth;
   }
 body{
-    background-color: #FAE7CB;
+    /* background-color: #FAE7CB; */
 }
 nav{
     background: #FFD31D;
@@ -84,20 +84,62 @@ display: flex;
 * grid items 
 *
 */
+
 #grid-book{
+    margin: 0px 8%;   
     
 }
 
 .bookcard{
-    margin:35px 20px;
+    margin:35px 10px;
     /* box-shadow: 5px 5px rgb(0, 0, 0,0.3); */
-    box-shadow: 5px 9px #FFB385;
+    /* box-shadow: 5px 9px #FFB385; */
+
 }
 
 
+
 .bookbtn{
-    background-color: #FF7272;
+    /* background-color: #FF7272; */
     
+}
+
+#grid-book-row-4{
+    display: flex;
+    justify-content:flex-start;
+    
+    padding-top:5px;
+}
+#grid-book-row-4 > div {
+    
+}
+
+.price-btn{
+    background-color: #002347;
+    width: 30%;
+    margin-right: 20%;
+    color: white;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    text-align: center;
+    font-weight: 600;
+
+}
+
+#grid-book-row-3{
+    display: flex; 
+    font-weight: 600;
+}
+#grid-book-row-3 > div {
+    padding-right: 8%;
+}
+
+/*font styling grid*/
+#grid-book-row-2{
+    font-weight: 600;
+}
+#grid-book-row-1{
+    color: #002347;
 }
 
 /*pagination*/

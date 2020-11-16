@@ -62,6 +62,7 @@ const login = (req,res,next) => {
                     // })
                     res.cookie('token', token);
                    // res.send(`set token = ${token}`)
+                   //res.render('home',{auth:true,user:{name: user.name,email:user.email}})
                    res.redirect('/')
                 }else{
                     res.json({

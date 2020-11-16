@@ -8,7 +8,7 @@ const authenticate = (req,res,next) =>{
 const token = req.cookies.token
 const decode = jwt.verify(token,'verySecretValue')
 
-//console.log(token,decode)
+console.log(token,decode)
 
 req.user = decode
 next()

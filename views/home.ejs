@@ -34,24 +34,29 @@
         </div>
     <div id="grid-book">   
 
-<div class="container">
-    <div class="row justify-space-around">
+<div class="">
+    <div class="row">
         <% for (var i =1; i <=9;  i++ ) { %>
             
-            <div class="card bookcard" id=<%=i%> style="width: 21rem;">
-                <img class="card-img-top" src="/image/deadly-class-vol-1-reagan-youth-tp.jpg" 
+            <div class="card bookcard" id=<%=i%> style="width: 19rem;">
+                <img class="card-img-top" src="/image/Brotopia.jpg" 
                 alt="Card image cap"
-                height="200"
+                width="19rem"
+                height="250"
                 >
                 <div class="card-body">
-                  <h5 class="card-title">Card title</h5>
-                  <p class="card-text">Some quick example text to build on the card title and make up 
-                      the bulk of the card's content.</p>
-                <p id="details">Price: <%=i%>
-                <!-- <p id="courier"> --><br>
-                    Courier: <%=i%><br>
-                location: onhalu</p>
-                  <a href="#" class="btn bookbtn ml-auto">Contact Seller</a>
+                  <h5 class="card-title" id="grid-book-row-1">Book Name</h5>
+                  <p class="card-text" id="grid-book-row-2">author</p>
+                  <div class="card-text" id="grid-book-row-3">
+                    <div>Courier: <span id="courier">Yes        </span></div>
+                  <div style="color:#8d8d8d;">| Location: 
+                    <span id="location" style="color:#002347;">onhalu</span></div>
+                  </div>
+                <div id="grid-book-row-4">
+                  <div class="price-btn">Price</div>
+                <div class="price"><span id="price">&#8377 <%=i%> </span><span> /Month</span></div>
+                </div>
+                  <!-- <a href="#" class="btn bookbtn ml-auto">Contact Seller</a> -->
                 </div>
               </div>
 

@@ -58,18 +58,14 @@ app.use(middlewares)
 
 /*middlewares dealing with frontend*/
 
+app.use('/uploads',express.static('uploads'))
 
 
 
 
 app.get('/',authenticate,function(req,res){
-    console.log("user info= ",req.user)
-    var auth=false
-    if(req.user){
-        auth=true
-        res.render("home",{auth:auth,user:req.user})
-    }
-    res.render("home",{auth:auth})
+    
+    res.render("home",{auth:true,user:req.user})
 
 })
 
