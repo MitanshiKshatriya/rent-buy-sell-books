@@ -15,6 +15,7 @@ const UserRoute = require('./routes/UserRoute')
 const AuthRoute = require('./routes/AuthRoute')
 const BookRoute = require('./routes/BooksRoutes')
 const authenticate = require('./middleware/authenticate')
+const Book = require('./models/Books')
 
 const PORT = process.env.PORT || 3000 
 
@@ -63,9 +64,20 @@ app.use('/uploads',express.static('uploads'))
 
 
 
+
 app.get('/',authenticate,function(req,res){
+
+    Book.find({})
+    .then(response=>{
+        res.render("home",{auth:true,user:req.user,books:response})
+    })
+    .catch(err=>{
+        res.json({
+            error:err
+        })
+    })
     
-    res.render("home",{auth:true,user:req.user})
+    
 
 })
 

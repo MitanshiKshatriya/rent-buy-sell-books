@@ -128,10 +128,11 @@ display: flex;
 
 #grid-book-row-3{
     display: flex; 
+    justify-content: space-around;
     font-weight: 600;
 }
 #grid-book-row-3 > div {
-    padding-right: 8%;
+  
 }
 
 /*font styling grid*/

@@ -36,7 +36,7 @@
 
 <div class="">
     <div class="row">
-        <% for (var i =1; i <=9;  i++ ) { %>
+        <!-- <% for (var i =1; i <=9;  i++ ) { %>
             
             <div class="card bookcard" id=<%=i%> style="width: 19rem;">
                 <img class="card-img-top" src="/image/Brotopia.jpg" 
@@ -56,13 +56,43 @@
                   <div class="price-btn">Price</div>
                 <div class="price"><span id="price">&#8377 <%=i%> </span><span> /Month</span></div>
                 </div>
-                  <!-- <a href="#" class="btn bookbtn ml-auto">Contact Seller</a> -->
+                
                 </div>
               </div>
 
 
             <%#  will output the numbers 1-10 %>
-            <% } %>
+            <% } %> -->
+            <% if(locals.books){ %>
+            <% for (var i =0; i <=8;  i++ ) { %>
+            
+              <div class="card bookcard" id=<%=books[i]._id%> style="width: 19rem;">
+                  <img class="card-img-top" 
+                  src=<%=books[i].imageUrl.substring(7,)%> 
+                  alt="Card image cap"
+                  width="19rem"
+                  height="300"
+                  >
+                  <div class="card-body">
+                    <h5 class="card-title" id="grid-book-row-1"><%=books[i].bookName%></h5>
+                    <p class="card-text" id="grid-book-row-2">Terri Chenney</p>
+                    <div class="card-text" id="grid-book-row-3">
+                      <div>Courier: <span id="courier">Yes        </span></div>
+                    <div style="color:#8d8d8d;">| Location: 
+                      <span id="location" style="color:#002347;"><%=books[i].location%></span></div>
+                    </div>
+                  <div id="grid-book-row-4">
+                    <div class="price-btn">Price</div>
+                  <div class="price"><span id="price">&#8377 <%=books[i].price%> </span><span> /Month</span></div>
+                  </div>
+                  
+                  </div>
+                </div>
+  
+  
+              <%#  will output the numbers 1-10 %>
+              <% } %>
+              <% } %>
             
     </div>
 </div>
