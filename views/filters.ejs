@@ -14,36 +14,37 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form method="GET" action="/filterout">
               <div class="form-group">
-                <label for="recipient-name" class="col-form-label">Category:</label><br>
-                <input type="radio" class="" id="all-category" name="category">
-                <label for="recipient-name" class="col-form-label" value="all">All</label>
+                <label for="recipient-name" class="col-form-label">Option:</label><br>
+                <input type="radio" class="" id="all-option" name="option"  value="all">
+                <label for="recipient-name" class="col-form-label">All</label>
                 <br>
-                <input type="radio" class="" id="rent-category" name="category">
-                <label for="recipient-name" class="col-form-label" value="rent">Rent</label>
+                <input type="radio" class="" id="rent-option" name="option" value="rent">
+                <label for="recipient-name" class="col-form-label">Rent</label>
                 <br>
-                <input type="radio" class="" id="buy-category" name="category">
-                <label for="recipient-name" class="col-form-label" value="buy">Buy</label><br>
+                <input type="radio" class="" id="buy-option" name="option" value="buy">
+                <label for="recipient-name" class="col-form-label" >Buy</label><br>
               </div>
               <hr>
               <div class="form-group">
                 <label for="message-text" class="col-form-label">Courier provided:</label><br>
-                <input type="radio" class="" id="yes-courier" name="courier">
-                <label for="recipient-name" class="col-form-label" value="yes">Yes</label>
+                <input type="radio" class="" id="yes-courier" name="courier" value="yes">
+                <label for="recipient-name" class="col-form-label" >Yes</label>
                 <br>
-                <input type="radio" class="" id="no-courier" name="courier">
-                <label for="recipient-name" class="col-form-label" value="no">No</label>
+                <input type="radio" class="" id="no-courier" name="courier" value="no">
+                <label for="recipient-name" class="col-form-label">No</label>
                 <br>
-                <input type="radio" class="" id="nopreferenece-courier" name="courier">
-                <label for="recipient-name" class="col-form-label" value="nopref">No Preference</label><br>
+                <input type="radio" class="" id="nopreferenece-courier" name="courier" value="nopref">
+                <label for="recipient-name" class="col-form-label">No Preference</label><br>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn" id="modalFilter">Apply Filter</button>
               </div>
             </form>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-            <button type="button" class="btn" id="modalFilter">Apply Filter</button>
-          </div>
+          
         </div>
       </div>
     </div>
@@ -52,7 +53,8 @@
     method="GET" action="/search"
     >
         <input class="form-control mr-sm-2" type="search" 
-        placeholder="<%=query%>" aria-label="Search"
+        placeholder="Search" aria-label="Search"
+        value="<%=query%>"
         name="query"
         >
         <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
@@ -104,10 +106,15 @@
                 
         </div>
 </div>
-<%if(!locals.books){%>
+<%if(books.length==0){%>
     <div class="alert" role="alert" id="booknotfoundalert">
        <div>
+         <%if(locals.query){%>
            <h3>Ooo! No book related to <%=query%> found!</h3>
+        <%}%>
+        <%if(locals.filters){%>
+          <h3>Ooo! No book related to queries <%=filters[0]%>, <%=filters[1]%> found!</h3>
+        <%}%>
            <a href="/"><button class="btn" id="filters" >Home</button></a>
     </div> 
        

@@ -47,21 +47,49 @@ const index = (req,res) => {
 }
 
 const filterout = (req,res,next) => {
-    console.log(req.body)
-res.render('filters')
+    console.log(req.query)
+    var option = req.query.option;
+    if(option=="buy"){option="sell"}
+    var courier = req.query.courier;
+    if(option=="all" && courier=="nopref"){
+        res.redirect('/search?query=')
+    }
+    else if(option=="all" && courier!="nopref"){
+        Book.find({courier:courier})
+        .then(response=>{
+            res.render('filters',{books:response,query:"",filters:[option,courier]})
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+    }
+    else if(option!="all" && courier=="nopref"){
+        Book.find({option:option})
+        .then(response=>{
+            res.render('filters',{books:response,query:"",filters:[option,courier]})
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+    }else{
+        Book.find({option:option,courier:courier})
+        .then(response=>{
+            res.render('filters',{books:response,query:"",filters:[option,courier]})
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+    }
+    
 }
 const search = (req,res,next) => {
     //console.log(req.query)
     var query = req.query.query.charAt(0).toUpperCase() + req.query.query.slice(1) //capitalizing
    Book.find({ "bookName":{$regex : `.*${query}.*`}})
     .then(response=>{
-        if(response.length>0){
-            //console.log("response = ",response)
+        
             res.render('filters',{books:response,query:query})
-        }else{
-            //console.log("didnt show response = ",response)
-            res.render('filters',{query:query})
-        }
+        
     })
     .catch(err=>{
         console.log(err)

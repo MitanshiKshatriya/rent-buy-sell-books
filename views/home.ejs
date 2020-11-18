@@ -28,36 +28,37 @@ aria-hidden="true">
         </button>
       </div>
       <div class="modal-body">
-        <form>
+        <form method="GET" action="/filterout">
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Category:</label><br>
-            <input type="radio" class="" id="all-category" name="category">
-            <label for="recipient-name" class="col-form-label" value="all">All</label>
+            <label for="recipient-name" class="col-form-label">Option:</label><br>
+            <input type="radio" class="" id="all-option" name="option" value="all">
+            <label for="recipient-name" class="col-form-label">All</label>
             <br>
-            <input type="radio" class="" id="rent-category" name="category">
-            <label for="recipient-name" class="col-form-label" value="rent">Rent</label>
+            <input type="radio" class="" id="rent-option" name="option" value="rent">
+            <label for="recipient-name" class="col-form-label">Rent</label>
             <br>
-            <input type="radio" class="" id="buy-category" name="category">
-            <label for="recipient-name" class="col-form-label" value="buy">Buy</label><br>
+            <input type="radio" class="" id="buy-option" name="option" value="buy">
+            <label for="recipient-name" class="col-form-label">Buy</label><br>
           </div>
           <hr>
           <div class="form-group">
             <label for="message-text" class="col-form-label">Courier provided:</label><br>
-            <input type="radio" class="" id="yes-courier" name="courier">
-            <label for="recipient-name" class="col-form-label" value="yes">Yes</label>
+            <input type="radio" class="" id="yes-courier" name="courier" value="yes">
+            <label for="recipient-name" class="col-form-label">Yes</label>
             <br>
-            <input type="radio" class="" id="no-courier" name="courier">
-            <label for="recipient-name" class="col-form-label" value="no">No</label>
+            <input type="radio" class="" id="no-courier" name="courier" value="no">
+            <label for="recipient-name" class="col-form-label">No</label>
             <br>
-            <input type="radio" class="" id="nopreferenece-courier" name="courier">
-            <label for="recipient-name" class="col-form-label" value="nopref">No Preference</label><br>
+            <input type="radio" class="" id="nopreferenece-courier" name="courier" value="nopref">
+            <label for="recipient-name" class="col-form-label">No Preference</label><br>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+            <button type="submit" class="btn" id="modalFilter">Apply Filter</button>
           </div>
         </form>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
-        <button type="button" class="btn" id="modalFilter">Apply Filter</button>
-      </div>
+      
     </div>
   </div>
 </div>
@@ -78,7 +79,7 @@ method="GET" action="/search"
     <div class="row">
             <% if(locals.books){ %>
             <% for (var i =0; i <12;  i++ ) { %>
-            
+
               <div class="card bookcard" id=<%=books[i]._id%> style="width: 19rem;">
                   <img class="card-img-top" 
                   src=<%=books[i].imageUrl.substring(7,)%> 
@@ -102,7 +103,7 @@ method="GET" action="/search"
                   
                   </div>
                 </div>
-  
+
   
               <%#  will output the numbers 1-10 %>
               <% } %>
