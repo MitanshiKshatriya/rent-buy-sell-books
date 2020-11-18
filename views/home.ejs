@@ -25,11 +25,57 @@
                 </ul>
               
         </div> -->
-        <div id="filters" class="container">
-<button class="btn">Filters</button>
-<form class="form-inline my-2 my-lg-0">
+        <div id="filter" class="container-fluid">
+<button class="btn" id="filters" data-toggle="modal" data-target="#filterModal">Filters</button>
+
+<div class="modal fade" id="filterModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" 
+aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Apply Filters</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Category:</label><br>
+            <input type="radio" class="" id="all-category" name="category">
+            <label for="recipient-name" class="col-form-label" value="all">All</label>
+            <br>
+            <input type="radio" class="" id="rent-category" name="category">
+            <label for="recipient-name" class="col-form-label" value="rent">Rent</label>
+            <br>
+            <input type="radio" class="" id="buy-category" name="category">
+            <label for="recipient-name" class="col-form-label" value="buy">Buy</label><br>
+          </div>
+          <hr>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Courier provided:</label><br>
+            <input type="radio" class="" id="yes-courier" name="courier">
+            <label for="recipient-name" class="col-form-label" value="yes">Yes</label>
+            <br>
+            <input type="radio" class="" id="no-courier" name="courier">
+            <label for="recipient-name" class="col-form-label" value="no">No</label>
+            <br>
+            <input type="radio" class="" id="nopreferenece-courier" name="courier">
+            <label for="recipient-name" class="col-form-label" value="nopref">No Preference</label><br>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-warning" data-dismiss="modal">Close</button>
+        <button type="button" class="btn" id="modalFilter">Apply Filter</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<form class="form-inline my-2 my-lg-0" id="search-form">
     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
   </form>
         </div>
     <div id="grid-book">   
@@ -64,7 +110,7 @@
             <%#  will output the numbers 1-10 %>
             <% } %> -->
             <% if(locals.books){ %>
-            <% for (var i =0; i <=8;  i++ ) { %>
+            <% for (var i =0; i <12;  i++ ) { %>
             
               <div class="card bookcard" id=<%=books[i]._id%> style="width: 19rem;">
                   <img class="card-img-top" 
@@ -75,9 +121,10 @@
                   >
                   <div class="card-body">
                     <h5 class="card-title" id="grid-book-row-1"><%=books[i].bookName%></h5>
-                    <p class="card-text" id="grid-book-row-2">Terri Chenney</p>
+                    <p class="card-text" id="grid-book-row-2"><%=books[i].author%></p>
                     <div class="card-text" id="grid-book-row-3">
-                      <div>Courier: <span id="courier">Yes        </span></div>
+                    
+                    <div>Courier: <span id="" style="text-transform: capitalize;">  <%=books[i]._doc.courier%>   </span></div>
                     <div style="color:#8d8d8d;">| Location: 
                       <span id="location" style="color:#002347;"><%=books[i].location%></span></div>
                     </div>
@@ -121,5 +168,8 @@
 
       
 </div>
+<script src="/js/home.js">
 
+
+</script>
 <%- include("./partials/footer.ejs") -%>

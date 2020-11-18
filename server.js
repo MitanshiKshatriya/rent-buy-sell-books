@@ -5,7 +5,6 @@ const path = require('path')
 const cookieParser = require('cookie-parser')
 
 
-
 const app = express()
 
 /**
@@ -69,6 +68,8 @@ app.get('/',authenticate,function(req,res){
 
     Book.find({})
     .then(response=>{
+        //console.log(Object.keys(response[0]._doc))
+        //console.log("courier ",response[1]._doc.courier)
         res.render("home",{auth:true,user:req.user,books:response})
     })
     .catch(err=>{

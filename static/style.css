@@ -77,6 +77,28 @@ display: flex;
     font-size: 48px;
 }
 
+/*
+*filters
+*/
+#filter{
+    display:flex;
+   
+    margin-top: 2%;
+ 
+   
+}
+#filters{
+    margin-right: auto;
+    margin-left:7%;
+}
+#search-form{
+    margin-right:7%;
+}
+#filters,#modalFilter{
+    background-color: #002347; color:white;
+}
+
+
 /*grid*/
 
 /*

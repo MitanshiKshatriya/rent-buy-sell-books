@@ -9,9 +9,10 @@ const sell = (req,res,next) =>{
 
     let b1 = new Book({
         bookName:req.body.bookName,
-        // option:req.body.option,
+        author:req.body.author,
+        option:req.body.rent_sell,
         price:req.body.price,
-        // courrier:req.body.courrier,
+        courier:req.body.courier,
         location:req.body.location,
         email:req.user.email,
     })
