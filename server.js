@@ -61,7 +61,21 @@ app.use(middlewares)
 app.use('/uploads',express.static('uploads'))
 
 
+app.get('/home',function(req,res){
 
+    Book.find({})
+    .then(response=>{
+        //console.log(Object.keys(response[0]._doc))
+        //console.log("courier ",response[1]._doc.courier)
+        res.render("home",{auth:false,books:response})
+    })
+    .catch(err=>{
+        res.json({
+            error:err
+        })
+    })
+
+})
 
 
 app.get('/',authenticate,function(req,res){

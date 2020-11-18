@@ -46,6 +46,30 @@ const index = (req,res) => {
     })
 }
 
+const filterout = (req,res,next) => {
+    console.log(req.body)
+res.render('filters')
+}
+const search = (req,res,next) => {
+    //console.log(req.query)
+    var query = req.query.query.charAt(0).toUpperCase() + req.query.query.slice(1) //capitalizing
+   Book.find({ "bookName":{$regex : `.*${query}.*`}})
+    .then(response=>{
+        if(response.length>0){
+            //console.log("response = ",response)
+            res.render('filters',{books:response,query:query})
+        }else{
+            //console.log("didnt show response = ",response)
+            res.render('filters',{query:query})
+        }
+    })
+    .catch(err=>{
+        console.log(err)
+        res.render('filters',{error:err,query:query})
+    })
+//res.render('filters')
+}
+
 module.exports = {
-    getSell,sell,index
+    getSell,sell,index,filterout,search
 }

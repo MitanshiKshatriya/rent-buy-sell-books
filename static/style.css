@@ -221,3 +221,19 @@ margin-top: 5%;
 #signup-btn{
     background-color: #FF7272;
 }
+
+/*
+* filters page
+*/
+
+#booknotfoundalert{
+    margin-top: 5%;
+    height:250px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #FFB385;
+
+    color: black;
+}

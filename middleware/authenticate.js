@@ -15,7 +15,7 @@ next()
     }
     catch(e){
         
-res.render("home",{auth:false})
+res.redirect("/home")
     }
 }
 

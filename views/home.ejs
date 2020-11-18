@@ -7,24 +7,13 @@
         </div>
         <div id="scroll-down">
             <a href="#grid-book" id="down">
-                <!-- <img src="\image\arrow-down-sign-to-navigate.svg" height="50" width="50" style="color: white;"> -->
                 <i class="fas fa-chevron-down"></i>
             </a>
             
                 </div>
     </div>
    
-        <!-- <div id="tabs">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Rent</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Buy</a>
-                </li>
-                </ul>
-              
-        </div> -->
+
         <div id="filter" class="container-fluid">
 <button class="btn" id="filters" data-toggle="modal" data-target="#filterModal">Filters</button>
 
@@ -73,8 +62,13 @@ aria-hidden="true">
   </div>
 </div>
 
-<form class="form-inline my-2 my-lg-0" id="search-form">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+<form class="form-inline my-2 my-lg-0" id="search-form"
+method="GET" action="/search"
+>
+    <input class="form-control mr-sm-2" type="search" 
+    placeholder="Search" aria-label="Search"
+    name="query"
+    >
     <button class="btn btn-warning my-2 my-sm-0" type="submit">Search</button>
   </form>
         </div>
@@ -82,33 +76,6 @@ aria-hidden="true">
 
 <div class="">
     <div class="row">
-        <!-- <% for (var i =1; i <=9;  i++ ) { %>
-            
-            <div class="card bookcard" id=<%=i%> style="width: 19rem;">
-                <img class="card-img-top" src="/image/Brotopia.jpg" 
-                alt="Card image cap"
-                width="19rem"
-                height="250"
-                >
-                <div class="card-body">
-                  <h5 class="card-title" id="grid-book-row-1">Book Name</h5>
-                  <p class="card-text" id="grid-book-row-2">author</p>
-                  <div class="card-text" id="grid-book-row-3">
-                    <div>Courier: <span id="courier">Yes        </span></div>
-                  <div style="color:#8d8d8d;">| Location: 
-                    <span id="location" style="color:#002347;">onhalu</span></div>
-                  </div>
-                <div id="grid-book-row-4">
-                  <div class="price-btn">Price</div>
-                <div class="price"><span id="price">&#8377 <%=i%> </span><span> /Month</span></div>
-                </div>
-                
-                </div>
-              </div>
-
-
-            <%#  will output the numbers 1-10 %>
-            <% } %> -->
             <% if(locals.books){ %>
             <% for (var i =0; i <12;  i++ ) { %>
             
