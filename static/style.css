@@ -237,3 +237,18 @@ margin-top: 5%;
 
     color: black;
 }
+
+#detail{
+    padding: 5px 0px;
+    background-color: #FF7272;
+    margin-bottom: 20px;
+}
+#detail ul{
+    list-style: none;
+    color:whitesmoke;
+}
+
+#detail ul li{
+    padding: 2px;
+    
+}

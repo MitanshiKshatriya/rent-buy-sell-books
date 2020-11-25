@@ -57,7 +57,7 @@ const filterout = (req,res,next) => {
     else if(option=="all" && courier!="nopref"){
         Book.find({courier:courier})
         .then(response=>{
-            res.render('filters',{books:response,query:"",filters:[option,courier]})
+            res.render('filters',{books:response,query:"",filters:[option,courier],auth:true,user:req.user})
         })
         .catch(err=>{
             res.send(err)
@@ -66,7 +66,7 @@ const filterout = (req,res,next) => {
     else if(option!="all" && courier=="nopref"){
         Book.find({option:option})
         .then(response=>{
-            res.render('filters',{books:response,query:"",filters:[option,courier]})
+            res.render('filters',{books:response,query:"",filters:[option,courier],auth:true,user:req.user})
         })
         .catch(err=>{
             res.send(err)
@@ -74,7 +74,7 @@ const filterout = (req,res,next) => {
     }else{
         Book.find({option:option,courier:courier})
         .then(response=>{
-            res.render('filters',{books:response,query:"",filters:[option,courier]})
+            res.render('filters',{books:response,query:"",filters:[option,courier],auth:true,user:req.user})
         })
         .catch(err=>{
             res.send(err)
@@ -88,7 +88,7 @@ const search = (req,res,next) => {
    Book.find({ "bookName":{$regex : `.*${query}.*`}})
     .then(response=>{
         
-            res.render('filters',{books:response,query:query})
+            res.render('filters',{books:response,query:query,auth:true,user:req.user})
         
     })
     .catch(err=>{
@@ -98,6 +98,18 @@ const search = (req,res,next) => {
 //res.render('filters')
 }
 
+const display_book = (req,res,next) =>{
+    console.log(req.query)
+    Book.findOne({_id:req.query.id})
+    .then(response=>{
+        res.render('book',{book:response,auth:true,user:req.user})
+    })
+    .catch(err=>{
+        res.send("some error occured!")
+    })
+    
+} 
+
 module.exports = {
-    getSell,sell,index,filterout,search
+    getSell,sell,index,filterout,search,display_book
 }

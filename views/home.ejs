@@ -88,7 +88,9 @@ method="GET" action="/search"
                   height="300"
                   >
                   <div class="card-body">
-                    <h5 class="card-title" id="grid-book-row-1"><%=books[i].bookName%></h5>
+                 <a href="/book?id=<%=books[i]._id%>">
+                  <h5 class="card-title" id="grid-book-row-1"><%=books[i].bookName%></h5>
+                </a>   
                     <p class="card-text" id="grid-book-row-2"><%=books[i].author%></p>
                     <div class="card-text" id="grid-book-row-3">
                     

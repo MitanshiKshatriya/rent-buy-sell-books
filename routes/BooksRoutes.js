@@ -12,5 +12,6 @@ router.post('/sell',authenticate,upload.single('book_img'),BookController.sell)
 router.get('/books/index/',authenticate,BookController.index)
 router.get('/search',authenticate,BookController.search)
 router.get('/filterout',authenticate,BookController.filterout)
+router.get('/book',authenticate,BookController.display_book)
 
 module.exports = router

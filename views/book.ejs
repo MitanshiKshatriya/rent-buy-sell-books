@@ -1,0 +1,67 @@
+<%- include("./partials/header.ejs") -%>
+<div class="container mt-5">
+<div id="book-main-layout" class="row justify-content-around">
+    <div id="book-image" class="col-lg-6">
+        <img class="image-responsive" 
+        src=<%=book.imageUrl.substring(7,)%> 
+        alt="Card image cap"
+        height="500"
+        width="auto"
+        >
+        
+    </div>
+    <div id="book-details" class="col-lg-6">
+        <div id="title">
+            <h2><%=book.bookName%></h2>
+            <h5><%=book.author%></h5>
+        </div>
+        <div id="desc">
+<p>Intially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+        </div>
+        <div id="detail">
+           <ul>
+            <li><b>TYPE: </b><%=book.option%></li>
+            <%if(book.option=="rent"){%>
+                <li><b>PRICE: </b><%=book.price%>/Month</li>
+            <%}%>
+            <%if(book.option=="sell"){%>
+                <li><b>PRICE: </b><%=book.price%></li>
+            <%}%>
+            <li><b>COURIER: </b><%=book.courier%></li>
+           </ul> 
+        </div>
+        <div>
+            <button class="btn btn-warning" data-toggle="modal" data-target="#sendContact">Contact Seller Now</button>
+            <div class="modal fade" id="sendContact" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Contact Seller</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <form method="POST" action="/sendmail">
+                    <div class="modal-body">
+                      Do you want to send contact details to the seller?
+                      <p>Note: The seller may or may not contact you.</p>
+                    <div style="display:none">
+                    <input name="bookName" value="<%=book.bookName%>">
+                    <input name="email" value="<%=book.email%>">
+                    <input name="id" value="<%=book._id%>">
+                    </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn btn-primary">Send Contact Details</button>
+                    </div>
+                </form>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    
+</div>
+</div>
+<%- include("./partials/footer.ejs") -%>
