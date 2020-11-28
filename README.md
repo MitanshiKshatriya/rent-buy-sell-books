@@ -1,6 +1,8 @@
-# rennt-buy-sell-books
+# rent-buy-sell-books
 
-- signup, login,logout working
+- register and login
 - try with email - ts@universal.com password - 12345
+- add,update or delete books
+- contact sellers
 
 ![](static/image/screenshot.png)
