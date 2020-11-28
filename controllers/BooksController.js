@@ -21,8 +21,11 @@ const sell = (req,res,next) =>{
     }
     b1.save()
     .then(response=>{
-        res.json({
-           msg: "saved successfully!"
+        // res.json({
+        //    msg: "saved successfully!"
+        // })
+        res.render('sucess',{
+            msg:"Listing has been added successfully!",auth:true,user:req.user
         })
     })
     .catch(err=>{
@@ -109,6 +112,7 @@ const display_book = (req,res,next) =>{
     })
     
 } 
+
 
 module.exports = {
     getSell,sell,index,filterout,search,display_book

@@ -1,30 +1,9 @@
 const { response } = require('express');
 const User = require('../models/User')
+const Book = require('../models/Books')
+const nodemailer = require('nodemailer');
 
 
-const signup = (req,res) =>{
-
-    console.log(req.body);
-
-    // { name: 'what', email: 'my@my.com', tel: '7903948515', password: '' }
-  var u1 = new User({
-      name:req.body.name,
-      email:req.body.email,
-      phone:req.body.tel,
-      password:req.body.password
-  })
-
-  u1.save()
-  .then(response=>{
-      res.send("registered successfully!")
-  })
-  .catch(err=>{
-      res.send(`some error occured!-${err}`)
-  })
-
-
-
-}
 
 const index =(req,res) =>{
     User.find({})
@@ -37,10 +16,18 @@ const index =(req,res) =>{
 }
 
 const dashboard = (req,res)=>{
-    res.send("this is ur dashbpard u are looged in!")
+    Book.find({email:req.user.email})
+    .then(response=>{
+        res.render('dashboard',{books:response,user:req.user,auth:true})
+    })
+    .catch(err=>{
+        res.send(err)
+    })
+    
+    
 }
 
-const nodemailer = require('nodemailer');
+
 const sendmail = (req,res) => {
     
     var transport = nodemailer.createTransport({
@@ -66,11 +53,58 @@ const sendmail = (req,res) => {
           res.send(err)
         } else {
           console.log(info)
-          res.redirect(`/book?id=${req.body.id}`)
+          //res.redirect(`/book?id=${req.body.id}`)
+          res.render('success',{msg:"Your contact has been succesfully sent! We hope you are contacted soon!",
+          auth:true,user:req.user})
         }
     });
 }
+const delete_book = (req,res,next)=>{
+//res.send(req.body)
+//
+Book.findByIdAndDelete(req.body.id)
+.then(response=>{
+    console.log(response)
+    res.render('success',{msg:"Your listing has been successfully deleted",
+          auth:true,user:req.user})
+})
+.catch(err=>{
+    res.send(err)
+})
+}
+const get_edit_book = (req,res,next)=>{
+    //console.log(req.query.id)
+    Book.findOne({_id:req.query.id})
+    .then(response=>{
+        res.render('edit',{auth:true,user:req.user,book:response})
+    })
+    .catch(err=>{
+        res.send(err)
+    })
+    
+}
+const post_edit_book = (req,res,next) =>{
+    console.log("req.body=",req.body)
+    var updateData = {
+        bookName:req.body.bookName,
+        author:req.body.author,
+        option:req.body.rent_sell,
+        price:req.body.price,
+        courier:req.body.courier,
+        location:req.body.location,
+
+    }
+    Book.findOneAndUpdate({_id:req.body.id},
+        {$set:updateData})
+        .then(()=>{
+            //res.redirect('/dashboard')
+            res.render('success',{msg:"Book updated successfully!",auth:true,user:req.user})
+        })
+        .catch(err=>{
+            res.send(err)
+        })
+}
 
 module.exports = {
-    signup,index,dashboard,sendmail
+    index,dashboard,sendmail,delete_book,get_edit_book,post_edit_book
 }

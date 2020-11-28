@@ -1,0 +1,98 @@
+<%- include("./partials/header.ejs") -%>
+<div id="dashboard">
+    <h2>Your Listings</h2>
+    <%if(books.length==0){%>
+        <div class="alert container" role="alert" id="booknotfoundalert">
+           <div>
+             
+               <h3>Oops! Looks like you have not added any listings!</h3>
+            
+               <a href="/"><button class="btn" id="filters" >Home</button></a>
+        </div> 
+           
+          </div>
+    <%}%>
+    <div id="grid-book">   
+
+        <div class="">
+            <div class="row">
+                    
+                <% if(locals.books){ %>
+    
+                    <% for (var i =0; i <books.length;  i++ ) { %>
+                    
+                        <div class="card" style="width: 500px;">
+                            <div class="row no-gutters">
+                                <div class="col-sm-5">
+                                    <img class="card-img" 
+                                    src=<%=books[i].imageUrl.substring(7,)%>
+                                    height="250"
+                                    alt="Book image">
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="card-body">
+                                        <h5 class="card-title"><%=books[i].bookName%></h5>
+                                        <p class="card-text"><%=books[i].author%></p>
+                                       <p class="card-text">
+                                        <span class="label label-navy"><%=books[i].price%></span>
+                                        <span class="label label-navy"><%=books[i].location%></span>
+                                        <span class="label label-navy"><%=books[i]._doc.courier%></span>
+                                        <span class="label label-navy"><%=books[i].option%></span>
+                                       </p>
+
+                                        <!-- <a href="#" class="btn btn-primary">View Profile</a> -->
+                                        
+                                            <button class="btn" type="submit"
+                                            data-toggle="modal" data-target="#delete">
+                                             <i class="fas fa-trash-alt"></i></button>
+                                            <div class="modal fade" id="delete" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                  <div class="modal-content">
+                                                    <div class="modal-header">
+                                                      <h5 class="modal-title" id="exampleModalLabel">Delete Listings</h5>
+                                                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                      </button>
+                                                    </div>
+                                                    <form method="POST" action="/delete">
+                                                    <div class="modal-body">
+                                                      Are you sure you want to delete the listing?
+                                                      
+                                                    <div style="display:none">
+                                                    <input name="id" value="<%=books[i]._id%>">
+                                                    
+                                                    </div>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                      <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </div>
+                                                </form>
+                                                  </div>
+                                                </div>
+                                              </div>
+                                              <button class="btn" type="submit"
+                                              data-toggle="modal" data-target="#edit">
+                                             <a href="/edit?id=<%=books[i]._id%>">
+                                                <i class="fas fa-edit"></i></a> 
+                                            </button>
+                                        
+                                     
+                                        
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+          
+                      <%#  will output the numbers 1-10 %>
+                      <% } %>
+                      <%}%>
+                      
+                    
+            </div>
+    </div>
+</div>
+
+
+<%- include("./partials/footer.ejs") -%>

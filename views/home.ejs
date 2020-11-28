@@ -78,7 +78,7 @@ method="GET" action="/search"
 <div class="">
     <div class="row">
             <% if(locals.books){ %>
-            <% for (var i =0; i <12;  i++ ) { %>
+            <% for (var i =0; i <books.length;  i++ ) { %>
 
               <div class="card bookcard" id=<%=books[i]._id%> style="width: 19rem;">
                   <img class="card-img-top" 

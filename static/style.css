@@ -252,3 +252,23 @@ margin-top: 5%;
     padding: 2px;
     
 }
+#success{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*dashboard*/
+#dashboard h2{
+    text-align: center;
+    margin-top: 30px;
+
+}
+.label-navy{
+
+background-color: #FFD31D;
+background-color:#002347;
+color:white;
+padding:5px 12px;
+border-radius: 60px;
+}

@@ -1,0 +1,85 @@
+<%- include("./partials/header.ejs") -%>
+
+
+
+<div class="container" id="signup-form">
+<form method="POST" action="/edit" enctype="multipart/form-data">
+  <div class="form-group" style="display: none;">
+    <label>Id</label>
+    <input type="text" class="form-control" name="id" id="id" placeholder="id"
+    value="<%=book._id%>"
+    >
+  </div>
+    <div class="form-group">
+        <label>Book Name</label>
+        <input type="text" class="form-control" name="bookName" id="bookName" placeholder="Name"
+        value="<%=book.bookName%>"
+        >
+      </div>
+      <div class="form-group">
+        <label>Author</label>
+        <input type="text" class="form-control" name="author" id="author" placeholder="Author"
+        value="<%=book.author%>"
+        >
+      </div>
+    <div class="form-group">
+      <label for="exampleInputEmail1">Upload Image</label>
+      <input type="file" class="form-control" 
+      id="book_img" 
+      name="book_img"
+      aria-describedby="emailHelp" placeholder="Enter email">
+      
+    </div>
+    <div class="form-group">
+        <label>Rent/Sell</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="rent_sell" id="rent" value="rent" checked>
+          <label class="form-check-label" for="rent">
+            Rent
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="rent_sell" id="sell" value="sell">
+          <label class="form-check-label" for="exampleRadios2">
+            Sell
+          </label>
+        </div>
+      </div>
+
+    <div class="form-group">
+      <label for="exampleInputPassword1">Price</label>
+      <input type="number" class="form-control" id="price"
+      name="price"
+      placeholder="Price"
+      value="<%=book.price%>"
+      >
+    </div>
+    <div class="form-group">
+        <label for="courier">Courier</label>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="courier" id="courier" value="yes" checked>
+          <label class="form-check-label" for="yes">
+            Yes
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="courier" id="courier" value="no">
+          <label class="form-check-label" for="no">
+            No
+          </label>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location">Location</label>
+        <input type="text" class="form-control" name="location" id="location" placeholder="Location"
+        value="<%=book.location%>"
+        >
+      </div>  
+    <button type="submit" class="btn" id="signup-btn">Submit</button>
+  </form>
+
+</div>
+
+
+
+<%- include("./partials/footer.ejs") -%>
