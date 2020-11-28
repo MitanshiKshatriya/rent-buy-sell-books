@@ -19,7 +19,7 @@ const Book = require('./models/Books')
 const PORT = process.env.PORT || 3000 
 
 /* connecting with mongodb */
-var url = 'mongodb://urmika:urmika@cluster0-shard-00-00.ju3qn.mongodb.net:27017,cluster0-shard-00-01.ju3qn.mongodb.net:27017,cluster0-shard-00-02.ju3qn.mongodb.net:27017/rentbuyselldb?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority'
+var url = ''
 
 mongoose.connect(url,
 {useNewUrlParser:true, 
